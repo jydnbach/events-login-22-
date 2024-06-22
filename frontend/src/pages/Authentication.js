@@ -35,5 +35,10 @@ export async function action({ request }) {
     throw json({ message: 'error' }, { status: 500 });
   }
 
+  const resData = await res.json();
+  const token = resData.token;
+
+  localStorage.setItem('token', token);
+
   return redirect('/');
 }
